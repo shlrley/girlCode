@@ -6,8 +6,8 @@ import pandas as pd
 from model.Product import Product
 from mlxtend.frequent_patterns import apriori, association_rules
 
-@app.route('/get_recs', methods=['POST'])
-def Recommender() -> List[str]:
+@app.route('/post', methods=['POST'])
+def Recommender():
     data = json.loads(request.data)
     p = Product(data)
     product = json.loads(p.get())

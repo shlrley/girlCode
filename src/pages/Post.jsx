@@ -23,6 +23,18 @@ const Post = () => {
     {image: 'https://aritzia.scene7.com/is/image/Aritzia/medium/f20_00_a06_78786_19269_on_a.jpg'},
     {image: 'https://i.ebayimg.com/images/g/JP4AAOSwA~JfzafK/s-l500.jpg'}]
 
+    useEffect(() => {
+        fetch('/post',{
+            'methods': 'GET',
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(response => setPost(response))
+        .catch(error => console.log(error));
+    }, [PostInfo]);
+
     const name = localStorage.getItem('name');
 
     return (
@@ -40,6 +52,12 @@ const Post = () => {
                 </Col>
                 <Col2>
                     <Desc>
+
+                        <Title>Item Name: {PostInfo.item}</Title>
+                        <Subtitle>Description</Subtitle>
+                        <Sub>Color: {PostInfo.color}<br/>Size: {PostInfo.size}</Sub>
+                        <Direct>Direct Link</Direct>
+
                         {/* <Title>Contour Longsleeve</Title>*/}
                         <Subtitle>{name.substring(1, name.length-1)}</Subtitle> 
                         <Sub>My fit check for today!!</Sub>
@@ -60,6 +78,7 @@ const Post = () => {
                                 <SmallT style={{ fontSize: '14px', marginTop: '-10px'}}>Color: Chrome</SmallT>
                             </Article>
                         </Articles>
+
                         <Text>Comments &nbsp; ∨</Text>
                     </Desc>
                 </Col2>
