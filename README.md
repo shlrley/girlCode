@@ -15,6 +15,7 @@ conda activate girlcode
 npm start
 
 # run backend database
+cd backend
 flask run
 ```
 
