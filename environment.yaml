@@ -14,5 +14,6 @@ dependencies:
   - scipy
   - pip
   - pip:
+      - flask
       - mlxtend
-      - apyori
+      - selenium
