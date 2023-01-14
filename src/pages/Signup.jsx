@@ -123,8 +123,9 @@ const Submit = styled.button`
     margin-top: 16px;
     color: #969696;
     border-radius: 8px;
+    cursor: pointer; 
     &:hover {
         background: black;
         color: white;
-  }
+    }
 `

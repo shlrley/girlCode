@@ -160,6 +160,11 @@ const Submit = styled.button`
     text-align: center;
     padding: 24px;
     margin-top: 16px;
-    text-color: #969696;
+    color: #969696;
     border-radius: 8px;
+    cursor: pointer; 
+    &:hover {
+        background: black;
+        color: white;
+    }
 `

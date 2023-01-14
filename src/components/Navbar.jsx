@@ -13,9 +13,9 @@ const Navbar = () => {
         <Wrapper>
             <Link to ="/community"><Icon src={google} /></Link>
             <Icons>
-                <Icon src={search} />
-                <Icon src={heart} />
-                <Icon src={person} />
+                <Link to ="/n"><Icon src={search} /></Link>
+                <Link to ="/n"><Icon src={heart} /></Link>
+                <Link to ="/profile"><Icon src={person} /></Link>
             </Icons>
         </Wrapper>
     )

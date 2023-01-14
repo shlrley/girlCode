@@ -1,8 +1,10 @@
-import React from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Navbar from '../components/Navbar.jsx';
-import Post from '../components/Post.jsx';
+import PostItem from '../components/PostItem.jsx';
+import Upload from '../components/Upload.jsx';
 
 const Community = () => {
 
@@ -13,18 +15,25 @@ const Community = () => {
     {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
     {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'}]
 
+    const [seen, setSeen] = useState(false);
+
+    const togglePop = () => {
+        setSeen(!seen);
+    };
+
     return (
         <Wrapper>
             <Navbar />
             <Feed>
                 <Top>
                     <Header>Community Feed</Header>
-                    <Upload>Upload</Upload>
+                    <Button onClick={togglePop}>Upload</Button>
                 </Top>
                 <Images>
-                    {posts.map((post) => <Post image={post.image} />)}
+                    {posts.map((post) => <PostItem image={post.image} />)}
                 </Images>
             </Feed>
+            {seen ? <Upload toggle={togglePop} /> : null}
         </Wrapper>
     )
 }
@@ -66,7 +75,7 @@ const Top = styled.div`
     justify-content: space-between;
 `
 
-const Upload = styled.button`
+const Button = styled.button`
     border-color: transparent;
     border-radius: 12px;
     font-size: 20px;
@@ -75,4 +84,5 @@ const Upload = styled.button`
     color: white;
     padding: 12px 24px;
     background-color: black;
+    cursor: pointer;
 `

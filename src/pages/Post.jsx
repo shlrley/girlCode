@@ -1,12 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import Navbar from '../components/Navbar.jsx';
 
-const Posts = () => {
+const Post = () => {
     return (
-        <div>
+        <Wrapper>
+            <Navbar />
             <h1>Posts</h1>
-        </div>
+        </Wrapper>
     )
 }
 
-export default Posts
+export default Post
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+`

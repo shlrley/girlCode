@@ -2,31 +2,39 @@ import { React, useState}  from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import save from '../img/save.png'
-import saved from '../img/saved.png'
+import save from '../img/heart.png'
+import saved from '../img/filled.png'
 
-const Post = (props) => {
+const PostItem = (props) => {
 
-    const saving = { save, saved }
     const [selected, setSelected] = useState(false)
+    const [isHovering, setIsHovering] = useState(false)
+
+    const handleMouseOver = () => {
+        setIsHovering(true);
+    }
+
+    const handleMouseOut = () => {
+        setIsHovering(false);
+    }
 
     const saveChangeHandler = () => {
         if(!selected) {
-            setSelected(true);
+            setSelected(true)
         } else {
             setSelected(false)
         }
-    };
+    }
 
     return (
-        <Wrapper>
+        <Wrapper onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <Image src={props.image} />
-            <Save src={!selected ? save : saved} onClick={saveChangeHandler}/>
+            {isHovering && (<Save src={!selected ? save : saved} onClick={saveChangeHandler} />)}
         </Wrapper>
     )
 }
 
-export default Post
+export default PostItem
 
 const Wrapper = styled.div`
     position: relative;
@@ -43,7 +51,8 @@ const Image = styled.img`
 
 const Save = styled.img`
     position: absolute;
-    width: 30px;
+    width: 28px;
     top: 12px;
-    left: 178px;
+    left: 176px;
+    cursor: pointer;
 `
