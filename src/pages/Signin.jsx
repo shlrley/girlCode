@@ -1,20 +1,22 @@
 import { React, useState, useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
+import google from '../img/google.png'
+import fb from '../img/fb.png'
+import aritzia from '../img/aritzia.png'
 
-const Signup = () => {
+const Signin = () => {
 
     const navigate = useNavigate();
 
-    function navigator() {
-        navigate(`/community`);
+    function navigator(event) {
+        navigate(`/community`)
     }
 
     const [userData, setUserData] = useState({
-        name: "",
         email: "",
         password: "",
     });
@@ -26,44 +28,38 @@ const Signup = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(userData);
-        setUserData({ name: "", email: "", password: "" });
+        setUserData({ email: "", password: "" });
         navigator();
     };
 
     // const handleSubmit = (event) => {
     //     event.preventDefault();
-    //     axios.post('/api/users', userData)
-    //     .then(response => {
-    //         console.log(response);
-    //         setUserData({ name: "", email: "", password: "" });
-    //         navigator();
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     });
+    //     axios.post('/api/signin', { email, password })
+    //         .then(response => {
+    //             console.log(response);
+    //             if (response.data.authenticated) {
+    //                 navigator();
+    //             } else {
+    //                 // Handle unsuccessful login
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         });
     // };
 
     return (
         <Wrapper>
             <Header>Join a community of fashion enthusiasts.</Header>
             <Sign>
-                <Sub>Create an account</Sub>
+                <Sub>Sign In</Sub>
                 <Form onSubmit={handleSubmit}>
-                    <Input
-                    label="Name"
-                    type="text" 
-                    placeholder="Name"
-                    name="name" 
-                    value={userData.name}
-                    required
-                    onChange={handleChange} />
                     <Input
                     label="Email"
                     type="email" 
                     placeholder="Email"
                     name="email"
                     value={userData.email}
-                    required
                     onChange={handleChange} />
                     <Input
                     label="Password"
@@ -71,17 +67,26 @@ const Signup = () => {
                     placeholder="Password"
                     name="password" 
                     value={userData.password}
-                    required
                     onChange={handleChange} />
-                    <Submit type="submit">Create account</Submit>
+                    <Submit type="submit">Sign in</Submit>
                 </Form> 
-                <Sub style={{ textAlign: 'center', fontSize: '20px', marginTop: '25px' }}>Have an account? <Link to="/signin" style={{ textDecoration: "none" }}>Sign in</Link></Sub>
+                <Cont>
+                    <Hr />
+                    <Sub style={{ textAlign: 'center', fontSize: '20px', marginTop: '25px' }}>Or continue with</Sub>
+                    <Hr />
+                </Cont>
+                <Items>
+                    <Item><Logo style={{ width: '60px', marginLeft: '30px' }} src={google} /></Item>
+                    <Item><Logo style={{ width: '50px', marginLeft: '35px' }} src={fb} /></Item>
+                    <Item><Logo style={{ width: '140px' }} src={aritzia} /></Item>
+                </Items>
+                <Sub style={{ textAlign: 'center', fontSize: '20px', marginTop: '25px' }}>Don't have an account? <Link to="/" style={{ textDecoration: "none" }}>Sign up</Link></Sub>
             </Sign>
         </Wrapper>
     )
 }
 
-export default Signup
+export default Signin
 
 const Wrapper = styled.div`
     display: flex;
@@ -90,11 +95,48 @@ const Wrapper = styled.div`
     margin-bottom: 40px;
 `
 
+const Cont = styled.div`
+    display: flex;
+    align-items: center;   
+    justify-content: center;
+`
+
+const Hr = styled.hr`
+    color: black;
+    background-color: black;
+    width: 200px;
+    border-color: transparent;
+    height: 0.5px;
+    align-self: center;
+    justify-self: center;
+    margin-top: 15px;
+`
+
 const Header = styled.h1`
     text-align: center;
     font-size: 36px;
     font-family: 'Alegreya Sans', sans-serif;
     font-weight: 500;
+`
+
+const Items = styled.div`
+    display: flex;
+    gap: 30px;
+    margin-top: 1px;
+`
+
+const Item = styled.div`
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 24px;
+    width: 200px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+`
+
+const Logo = styled.img`
+    align-self: center;
 `
 
 const Sub = styled.h3`

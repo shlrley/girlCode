@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import Navbar from '../components/Navbar.jsx';
 
-const Post = () => {
+const Profile = () => {
     return (
         <Wrapper>
             <Navbar />
-            <h1>Posts</h1>
+            <h1>Profile</h1>
         </Wrapper>
     )
 }
 
-export default Post
+export default Profile
 
 const Wrapper = styled.div`
     display: flex;
