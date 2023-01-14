@@ -10,6 +10,12 @@ conda env create -f environment.yml
 
 # activate environment
 conda activate girlcode
+
+# run frontend interface
+npm start
+
+# run backend database
+flask run
 ```
 
 ---
