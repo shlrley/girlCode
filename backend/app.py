@@ -2,10 +2,14 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask import jsonify
+from flask_cors import CORS, cross_origin
 from models import db, User, Post
 import os
 
+print('Running!');
+
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['UPLOAD_FOLDER'] = './uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -17,7 +21,7 @@ def index():
     posts = Post.query.all()
     return render_template('index.html', posts=posts)
 
-@app.route('/signup', methods=['GET', 'POST'])
+# @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         username = request.form['username']
@@ -44,9 +48,12 @@ ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route('/create', methods=['GET', 'POST'])
+@app.route('/create', methods=['GET', 'POST', 'OPTIONS'])
+@cross_origin(supports_credentials=True)
 def create():
+    print("creating!")
     if request.method == 'POST':
+        print('test')
         description = request.form['description']
         user_id = request.form['user_id']
         file = request.files['image']
@@ -58,7 +65,9 @@ def create():
             post = Post(image='', description=description, user_id=user_id)
         db.session.add(post)
         db.session.commit()
+        print("post!")
         return redirect(url_for('index'))
+    print("not post!")
     return render_template('create.html')
 
 @app.route('/posts', methods=['GET'])

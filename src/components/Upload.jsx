@@ -59,15 +59,20 @@ const Upload = ({toggle}) => {
     const handleUpload = (event) => {
       event.preventDefault();
   
-      const formData = new FormData();
-      formData.append('image', selectedImage);
-      formData.append('description', caption);
+      // const formData = new FormData();
+      // formData.append('image', selectedImage);
+      // formData.append('description', caption);
       //formData.append('user_id', userData.user_id);
-      
-      axios.post('/create', formData, {
-          headers: {
-              'Content-Type': 'multipart/form-data'
-          }
+      axios({
+        url: 'http://localhost:5000/create', 
+        method: 'post',
+        withCredentials: false,
+        crossDomain: true,
+        headers: {
+          "Access-Control-Allow-Origin": '*',
+          "Content-Type": "application/json" ,
+        },
+        data: { selectedImage, caption }
       })
       .then(response => {
           console.log(response);
