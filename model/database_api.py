@@ -2,7 +2,7 @@
 import csv, sqlite3
 from main import app
 
-@app.route('/', methods=['POST'])
+@app.route('/db', methods=['POST'])
 def create_tables():
     print('Creating databases...')
     con = sqlite3.connect("../clothing.db") # change to 'sqlite:///your_filename.db'
