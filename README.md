@@ -7,6 +7,7 @@ Contributors: Indy, Jena, Lauren, Shirley
 ```
 # create environment 
 conda env create -f environment.yml
+
 # activate environment
 conda activate girlcode
 ```
