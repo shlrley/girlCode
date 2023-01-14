@@ -1,7 +1,7 @@
 import { React, useState, useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { DetailsContext } from '../App.js'
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -28,7 +28,20 @@ const Signup = () => {
         console.log(userData);
         setUserData({ name: "", email: "", password: "" });
         navigator();
-      };
+    };
+
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     axios.post('/api/users', userData)
+    //     .then(response => {
+    //         console.log(response);
+    //         setUserData({ name: "", email: "", password: "" });
+    //         navigator();
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     });
+    // };
 
     return (
         <Wrapper>

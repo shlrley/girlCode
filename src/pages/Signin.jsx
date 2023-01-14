@@ -1,8 +1,8 @@
 import { React, useState, useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { DetailsContext } from '../App.js'
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 import google from '../img/google.png'
 import fb from '../img/fb.png'
@@ -30,7 +30,23 @@ const Signin = () => {
         console.log(userData);
         setUserData({ email: "", password: "" });
         navigator();
-      };
+    };
+
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     axios.post('/api/signin', { email, password })
+    //         .then(response => {
+    //             console.log(response);
+    //             if (response.data.authenticated) {
+    //                 navigator();
+    //             } else {
+    //                 // Handle unsuccessful login
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         });
+    // };
 
     return (
         <Wrapper>
@@ -79,10 +95,6 @@ const Wrapper = styled.div`
     margin-bottom: 40px;
 `
 
-const Logo = styled.img`
-    align-self: center;
-`
-
 const Cont = styled.div`
     display: flex;
     align-items: center;   
@@ -121,6 +133,10 @@ const Item = styled.div`
     height: 40px;
     align-items: center;
     justify-content: center;
+`
+
+const Logo = styled.img`
+    align-self: center;
 `
 
 const Sub = styled.h3`
