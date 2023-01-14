@@ -2,7 +2,6 @@ from main import app
 from main import request
 from main import json
 import sqlite3
-import numpy as np
 import pandas as pd
 from model.Product import Product
 from mlxtend.frequent_patterns import apriori, association_rules
@@ -59,6 +58,12 @@ def Recommender() -> List[str]:
                     mimetype='application/json'
                 )
             return response
+        else:
+            response = app.response_class(
+            response=json.dumps({"message":"There are currently no recommendations available."}),
+            status=403,
+            mimetype='application/json'
+        )
     
     except:
         response = app.response_class(
