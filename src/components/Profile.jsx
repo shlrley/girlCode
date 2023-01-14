@@ -15,15 +15,18 @@ const Profile = () => {
             console.error(error);
           }
         }
-    
         fetchData();
       }, []);
+
+    const name = localStorage.getItem('name');
+    const email = localStorage.getItem('email');
 
     return (
         <Wrapper>
             <Navbar />
             <Pic src="https://aritzia.scene7.com/is/image/Aritzia/large/s20_01_a08_70962_6020_on_e.jpg" />
-            <Name>Name {userData.name} </Name>
+            <Name>{name.substring(1, name.length-1)}</Name>
+            <Sub>{email.substring(1, email.length-1)}</Sub>
         </Wrapper>
     )
 }
@@ -49,3 +52,9 @@ const Name = styled.h1`
     font-family: 'Alegreya Sans', sans-serif;
 `
 
+const Sub = styled.h4`
+    font-size: 18px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 400;
+    margin-top: -20px;
+  `

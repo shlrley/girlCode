@@ -27,10 +27,12 @@ const PostItem = (props) => {
     }
 
     return (
-        <Wrapper onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-            <Image src={props.image} />
-            {isHovering && (<Save src={!selected ? save : saved} onClick={saveChangeHandler} />)}
-        </Wrapper>
+        <Link to='/post'>
+            <Wrapper onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+                <Image src={props.image} />
+                {isHovering && (<Save src={!selected ? save : saved} onClick={saveChangeHandler} />)}
+            </Wrapper>
+        </Link>
     )
 }
 

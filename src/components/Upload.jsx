@@ -56,20 +56,27 @@ const Upload = ({toggle}) => {
               </Photo>
             )}
             <br /><br /> 
-            <input
-              type="file"
-              name="myImage"
-              accept=".png, .jpg, .jpeg"
-              onChange={(event) => {
-                console.log(event.target.files[0]);
-                setSelectedImage(event.target.files[0]);
-              }}
-            />
-            <input
+            <Label for="images">
+            <Drop>Drop files here</Drop>or
+              <InputFile
+                type="file"
+                id="images"
+                name="myImage"
+                accept=".png, .jpg, .jpeg"
+                required
+                onChange={(event) => {
+                  console.log(event.target.files[0]);
+                  setSelectedImage(event.target.files[0]);
+                }}
+              />
+            </Label>
+            <Sub>Identify the clothing article</Sub>
+            <Input type="text" placeholder="Search..."/>
+            <Sub>Description</Sub>
+            <InputText
               type="text"
               value={caption}
               onChange={handleCaptionChange}
-              placeholder="Enter a caption"
             />
             <Button onClick={handleUpload}>Post</Button>
           </Photo>
@@ -84,8 +91,14 @@ const Wrapper = styled.div`
   position: fixed;
   z-index: 1;
   width: 100%;
-  height: 130%;
+  height: 180%;
   background-color: rgba(0, 0, 0, 0.25);
+`
+
+const Sub = styled.h4`
+  text-align: left;
+  font-size: 20px;
+  font-family: 'Alegreya Sans', sans-serif;
 `
 
 const Modal = styled.div`
@@ -117,9 +130,85 @@ const Photo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: -50px;
 `
 
 const InputFile = styled.input`
+  width: 350px;
+  max-width: 100%;
+  color: #444;
+  padding: 5px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #555;
+
+  &::file-selector-button { 
+    margin-right: 20px;
+    border: none;
+    background: #CACACA;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+`
+
+const Input = styled.input`
+  font-family: 'Exo 2', sans-serif;
+  font-size: 16px;
+  width: 385px;
+  padding: 10px;
+  border-radius: 10px;
+  border-color: transparent;
+  background-color: #EAEAEA;
+  margin-top: -15px;
+`
+
+const InputText = styled.textarea`
+  font-family: 'Exo 2', sans-serif;
+  font-size: 16px;
+  width: 385px;
+  padding: 10px;
+  border-radius: 10px;
+  border-color: transparent;
+  background-color: #EAEAEA;
+  margin-top: -15px;
+`
+
+const Label = styled.label`
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px dashed #555;
+  color: #444;
+  cursor: pointer;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+
+  &:hover {
+    background: #eee;
+    border-color: #111;
+    color: #222;
+  }
+`
+
+const Drop = styled.span`
+  color: #444;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: color .2s ease-in-out;
+
 `
 
 const Button = styled.button`
@@ -128,7 +217,8 @@ const Button = styled.button`
   font-family: 'Exo 2', sans-serif;
   text-align: center;
   padding: 12px 25px;
-  margin-top: 16px;
+  margin-top: 24px;
+  border-radius: 8px;
   color: #969696;
   border-radius: 8px;
   cursor: pointer; 
