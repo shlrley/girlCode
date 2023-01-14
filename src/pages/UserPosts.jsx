@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 
 import Profile from '../components/Profile.jsx';
 
-const SavedPosts = () => {
+const UserPosts = () => {
     return (
         <Wrapper>
             <Profile />
             <Items>
-                <Link to="/posts" style={{ textDecoration: "none" }}><Name style={{ color: '#787878' }}>Posts</Name></Link>
-                <Name style={{ textDecoration: 'underline' }}>Favorites</Name>
+                <Name style={{ textDecoration: 'underline' }}>Posts</Name>
+                <Link to="/saves" style={{ textDecoration: "none" }}><Name style={{ color: '#787878' }}>Favorites</Name></Link>
             </Items>
         </Wrapper>
     )
 }
 
-export default SavedPosts
+export default UserPosts
 
 const Wrapper = styled.div`
     display: flex;

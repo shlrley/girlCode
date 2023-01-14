@@ -9,7 +9,7 @@ import Signin from './pages/Signin.jsx'
 import Community from './pages/Community.jsx'
 import Post from './pages/Post.jsx'
 import SavedPosts from './pages/SavedPosts.jsx'
-import Profile from './pages/Profile.jsx'
+import UserPosts from './pages/UserPosts.jsx'
 
 export const DetailsContext = React.createContext(false);
 
@@ -24,7 +24,7 @@ function App() {
                   <Route path='community' element={<Community />} />
                   <Route path='post' element={<Post />} />
                   <Route path='saves' element={<SavedPosts />} />
-                  <Route path='profile' element={<Profile />} />
+                  <Route path='posts' element={<UserPosts />} />
               </Route>
           </Routes>
   </BrowserRouter>

@@ -15,7 +15,7 @@ const Navbar = () => {
             <Icons>
                 <Link to ="/n"><Icon src={search} /></Link>
                 <Link to ="/n"><Icon src={heart} /></Link>
-                <Link to ="/profile"><Icon src={person} /></Link>
+                <Link to ="/posts"><Icon src={person} /></Link>
             </Icons>
         </Wrapper>
     )
