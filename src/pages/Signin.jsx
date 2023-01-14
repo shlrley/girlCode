@@ -76,9 +76,9 @@ const Signin = () => {
                     <Hr />
                 </Cont>
                 <Items>
-                    <Item><Logo style={{ width: '60px', marginLeft: '30px' }} src={google} /></Item>
-                    <Item><Logo style={{ width: '50px', marginLeft: '35px' }} src={fb} /></Item>
-                    <Item><Logo style={{ width: '140px' }} src={aritzia} /></Item>
+                    <Item><Logo style={{ width: '60px', marginLeft: '34px', marginTop: '-5px' }} src={google} /></Item>
+                    <Item><Logo style={{ width: '50px', marginLeft: '36px' }} src={fb} /></Item>
+                    <Item><Logo style={{ width: '140px', marginTop: '5px' }} src={aritzia} /></Item>
                 </Items>
                 <Sub style={{ textAlign: 'center', fontSize: '20px', marginTop: '25px' }}>Don't have an account? <Link to="/" style={{ textDecoration: "none" }}>Sign up</Link></Sub>
             </Sign>
@@ -122,7 +122,7 @@ const Header = styled.h1`
 const Items = styled.div`
     display: flex;
     gap: 30px;
-    margin-top: 1px;
+    margin-top: 5px;
 `
 
 const Item = styled.div`
@@ -130,7 +130,7 @@ const Item = styled.div`
     border-radius: 8px;
     padding: 24px;
     width: 200px;
-    height: 40px;
+    height: 50px;
     align-items: center;
     justify-content: center;
 `

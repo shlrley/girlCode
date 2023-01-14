@@ -1,4 +1,4 @@
-import { React, useState, useContext } from 'react'
+import { React, useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
@@ -29,6 +29,12 @@ const Signup = () => {
         setUserData({ name: "", email: "", password: "" });
         navigator();
     };
+
+    useEffect(() => {
+        // storing input name
+        localStorage.setItem("name", JSON.stringify(userData.name));
+        localStorage.setItem("email", JSON.stringify(userData.email));
+      }, [userData]);
 
     // const handleSubmit = (event) => {
     //     event.preventDefault();

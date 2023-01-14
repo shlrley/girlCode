@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import PostItem from '../components/PostItem.jsx';
 import Profile from '../components/Profile.jsx';
 
-const SavedPosts = () => {
+const UserPosts = () => {
 
     const posts = [{image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
     {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
@@ -18,8 +18,8 @@ const SavedPosts = () => {
         <Wrapper>
             <Profile />
             <Items>
-                <Link to="/posts" style={{ textDecoration: "none" }}><Name style={{ color: '#787878' }}>Posts</Name></Link>
-                <Name style={{ textDecoration: 'underline' }}>Favorites</Name>
+                <Name style={{ textDecoration: 'underline' }}>Posts</Name>
+                <Link to="/saves" style={{ textDecoration: "none" }}><Name style={{ color: '#787878' }}>Favorites</Name></Link>
             </Items>
             <Images>
                 {posts.map((post) => <PostItem image={post.image} />)}
@@ -28,7 +28,7 @@ const SavedPosts = () => {
     )
 }
 
-export default SavedPosts
+export default UserPosts
 
 const Wrapper = styled.div`
     display: flex;
