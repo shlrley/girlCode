@@ -42,6 +42,7 @@ const Signup = () => {
                     placeholder="Name"
                     name="name" 
                     value={userData.name}
+                    required
                     onChange={handleChange} />
                     <Input
                     label="Email"
@@ -49,6 +50,7 @@ const Signup = () => {
                     placeholder="Email"
                     name="email"
                     value={userData.email}
+                    required
                     onChange={handleChange} />
                     <Input
                     label="Password"
@@ -56,6 +58,7 @@ const Signup = () => {
                     placeholder="Password"
                     name="password" 
                     value={userData.password}
+                    required
                     onChange={handleChange} />
                     <Submit type="submit">Create account</Submit>
                 </Form> 
@@ -73,8 +76,6 @@ const Wrapper = styled.div`
     margin-top: 75px;
     margin-bottom: 40px;
 `
-
-const Ahref = styled.a``
 
 const Header = styled.h1`
     text-align: center;
@@ -120,6 +121,10 @@ const Submit = styled.button`
     text-align: center;
     padding: 24px;
     margin-top: 16px;
-    text-color: #969696;
+    color: #969696;
     border-radius: 8px;
+    &:hover {
+        background: black;
+        color: white;
+  }
 `
