@@ -1,4 +1,19 @@
-# Getting Started with Create React App
+# GirlCode 
+
+Contributors: Indy, Jena, Lauren, Shirley 
+
+## Usage
+
+```
+# create environment 
+conda env create -f environment.yml
+
+# activate environment
+conda activate girlcode
+```
+
+---
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
