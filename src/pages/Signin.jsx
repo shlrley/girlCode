@@ -61,6 +61,7 @@ const Signin = () => {
                     placeholder="Email"
                     name="email"
                     value={userData.email}
+                    required
                     onChange={handleChange} />
                     <Input
                     label="Password"
@@ -68,6 +69,7 @@ const Signin = () => {
                     placeholder="Password"
                     name="password" 
                     value={userData.password}
+                    required
                     onChange={handleChange} />
                     <Submit type="submit">Sign in</Submit>
                 </Form> 
