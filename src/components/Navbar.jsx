@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 import heart from '../img/heart.png'
 import person from '../img/person.png'
 import search from '../img/search.png'
-import google from '../img/google.png'
+import logo from '../img/logo.png'
 
 const Navbar = () => {
 
     return (
         <Wrapper>
-            <Link to ="/community"><Icon src={google} /></Link>
+            <Link to ="/community"><Icon src={logo} /></Link>
             <Icons>
                 <Link to ="/n"><Icon src={search} /></Link>
                 <Link to ="/n"><Icon src={heart} /></Link>

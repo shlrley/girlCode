@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Navbar from '../components/Navbar.jsx';
 import PostItem from '../components/PostItem.jsx';
+import Upload from '../components/Upload.jsx';
 
 import arrow from '../img/arrow.png';
 
@@ -15,12 +16,12 @@ const Post = () => {
         setSeen(!seen);
     };
 
-    const posts = [{image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'}]
+    const posts = [{image: 'https://aritzia.scene7.com/is/image/Aritzia/large/f20_01_a06_79467_14808_on_c.jpg'},
+    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f20_03_a06_80214_15950_on_a?wid=1200'},
+    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f20_04_a06_79697_1274_on_a?wid=1200'},
+    {image: 'https://aritzia.scene7.com/is/image/Aritzia/s21_03_a06_81788_1311_on_a?wid=1200'},
+    {image: 'https://aritzia.scene7.com/is/image/Aritzia/medium/f20_00_a06_78786_19269_on_a.jpg'},
+    {image: 'https://i.ebayimg.com/images/g/JP4AAOSwA~JfzafK/s-l500.jpg'}]
 
     useEffect(() => {
         fetch('/post',{
@@ -32,7 +33,9 @@ const Post = () => {
         .then(response => response.json())
         .then(response => setPost(response))
         .catch(error => console.log(error));
-    }, [Post]);
+    }, [PostInfo]);
+
+    const name = localStorage.getItem('name');
 
     return (
         <Wrapper>
@@ -45,22 +48,46 @@ const Post = () => {
             </Feed>
             <Item>
                 <Col>
-                    <Image src='https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500' />
+                    <Image src='https://aritzia.scene7.com/is/image/Aritzia/f20_03_a06_80351_19564_on_a?wid=1200' />
                 </Col>
-                <Col>
+                <Col2>
                     <Desc>
-                        <Title>Item Name: {Post.item}</Title>
+
+                        <Title>Item Name: {PostInfo.item}</Title>
                         <Subtitle>Description</Subtitle>
-                        <Sub>Color: {Post.color}<br/>Size: {Post.size}</Sub>
+                        <Sub>Color: {PostInfo.color}<br/>Size: {PostInfo.size}</Sub>
                         <Direct>Direct Link</Direct>
+
+                        {/* <Title>Contour Longsleeve</Title>*/}
+                        <Subtitle>{name.substring(1, name.length-1)}</Subtitle> 
+                        <Sub>My fit check for today!!</Sub>
+                        <Subtitle>Clothing articles</Subtitle> 
+                        <Articles>
+                            <Article>
+                                <Img src='https://aritzia.scene7.com/is/image/Aritzia/f20_03_a06_80351_19564_off_a?wid=1500' />
+                                <SmallT onClick={(e)=> {
+                                    window.open("https://www.aritzia.com/en/product/cozy-fleece-mega-sweatpant/91896.html?dwvar_91896_color=19451_2", '_blank')
+                                }}>Cozy Fleece Mega Sweatpant</SmallT>
+                                <SmallT style={{ fontSize: '14px', marginTop: '-10px'}}>Color: Chrome</SmallT>
+                            </Article>
+                            <Article>
+                                <Img src='https://aritzia.scene7.com/is/image/Aritzia/s23_03_a01_95025_4425_off_a?wid=1500' />
+                                <SmallT onClick={(e)=> {
+                                    window.open("https://www.aritzia.com/en/product/ribbed-waist-t-shirt/95025.html?dwvar_95025_color=4425", '_blank')
+                                }}>Ribbed Waist T-Shirt</SmallT>
+                                <SmallT style={{ fontSize: '14px', marginTop: '-10px'}}>Color: Chrome</SmallT>
+                            </Article>
+                        </Articles>
+
                         <Text>Comments &nbsp; ∨</Text>
                     </Desc>
-                </Col>
+                </Col2>
             </Item>
             <Heading>Others also wear</Heading>
             <Images>
                 {posts.map((post) => <PostItem image={post.image} />)}
             </Images>
+            {seen ? <Upload toggle={togglePop} /> : null}
         </Wrapper>
     )
 }
@@ -113,9 +140,12 @@ const Item = styled.div`
 const Arrow = styled.img``
 
 const Col = styled.div`
-    flex: 50%;
+    flex: 40%;
 `
 
+const Col2 = styled.div`
+    flex: 60%;
+`
 
 const Images = styled.div`
     width: 1200px;
@@ -123,6 +153,20 @@ const Images = styled.div`
     flex-wrap: wrap;
     align-items: center;
     gap: 30px;
+`
+
+const Articles = styled.div`
+    display: flex;
+    gap: 36px;
+    margin-top: -15px;
+`
+
+const Article = styled.div`
+    width: 160px;
+`
+
+const Img = styled.img`
+    width: 160px;
 `
 
 const Image = styled.img`
@@ -143,6 +187,7 @@ const Subtitle = styled.h5`
     font-size: 24px;
     font-family: 'Exo 2', sans-serif;
     font-weight: 600;
+    margin-top: -1px;
 `
 
 const Sub = styled.h6`
@@ -150,6 +195,7 @@ const Sub = styled.h6`
     font-family: 'Exo 2', sans-serif;
     margin-top: -26px;
     font-weight: 400;
+    margin-bottom: 30px;
 `
 
 const Direct = styled.button`
@@ -172,8 +218,19 @@ const Text = styled.h4`
     font-family: 'Exo 2', sans-serif;
     font-weight: 400;
     text-align: center;
-    margin-top: 30px;
 `
+
+const SmallT = styled.p`
+    font-size: 16px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+`
+
 const Heading = styled.h4`
     font-size: 24px;
     font-family: 'Exo 2', sans-serif;
