@@ -5,6 +5,7 @@ import ScrollToTop from './hooks/ScrollToTop.js'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Signup from './pages/Signup.jsx'
+import Signin from './pages/Signin.jsx'
 import Community from './pages/Community.jsx'
 import Post from './pages/Post.jsx'
 import Upload from './pages/Upload.jsx'
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path='/'>
                   <Route index element={<Signup />} />
+                  <Route path='signin' element={<Signin />} />
                   <Route path='community' element={<Community />} />
                   <Route path='post' element={<Post />} />
                   <Route path='upload' element={<Upload />} />
