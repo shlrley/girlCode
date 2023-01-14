@@ -1,12 +1,27 @@
 import { React, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Upload = ({toggle}) => {
 
+  const navigate = useNavigate();
+
+  function navigator() {
+    navigate(`/community`)
+  }
     const handleClick = useCallback(() => {
         toggle();
       }, [toggle])
+
+    // const [userData, setUserData] = useState({
+    //     image: null,
+    //     description: ""
+    // });
+
+    // const handleChange = (event) => {
+    //     setUserData({ ...userData, [event.target.name]: event.target.value });
+    // };
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [caption, setCaption] = useState("");
@@ -25,21 +40,51 @@ const Upload = ({toggle}) => {
       setCaption(event.target.value);
     };
 
-    const handleUpload = async () => {
-      try {
-        const formData = new FormData();
-        formData.append("image", selectedImage);
-        formData.append("caption", caption);
-        const response = await axios.post("/api/upload", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        console.log(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    // const handleUpload = async (event) => {
+    //   try {
+    //     const formData = new FormData();
+    //     formData.append("image", selectedImage);
+    //     formData.append("description", caption);
+    //     const response = await axios.post("/create", formData, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     });
+    //     console.log(response);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
+
+    const handleUpload = (event) => {
+      event.preventDefault();
+  
+      // const formData = new FormData();
+      // formData.append('image', selectedImage);
+      // formData.append('description', caption);
+      //formData.append('user_id', userData.user_id);
+      axios({
+        url: 'http://localhost:5000/create', 
+        method: 'post',
+        withCredentials: false,
+        crossDomain: true,
+        headers: {
+          "Access-Control-Allow-Origin": '*',
+          "Content-Type": "application/json" ,
+        },
+        data: { selectedImage, caption }
+      })
+      .then(response => {
+          console.log(response);
+          setSelectedImage(null);
+          setCaption("");
+          //setUserData({ image: null, description: "", user_id: "" });
+          navigator();
+      })
+      .catch(error => {
+          console.log(error);
+      });
+  };
 
     return (
       <Wrapper>
@@ -89,10 +134,15 @@ export default Upload
 
 const Wrapper = styled.div`
   position: fixed;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  //z-index: 1;
   width: 100%;
-  height: 180%;
+  overflow: auto;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.25);
+  //max-height: calc(100vh - 210px);
+  //overflow-y: auto;
 `
 
 const Sub = styled.h4`
@@ -104,7 +154,7 @@ const Sub = styled.h4`
 const Modal = styled.div`
   background-color: white;
   position: absolute;
-  top: 20%;
+  top: 5%;
   left: 30%;
   width: 40%;
   padding: 20px;
@@ -130,7 +180,6 @@ const Photo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -50px;
 `
 
 const InputFile = styled.input`
