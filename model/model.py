@@ -10,15 +10,26 @@ def recommender(product: str) -> List[str]:
     # Load data set
     df = pd.read_csv('../dataset/ohe_product.csv')
 
+    # Drop customer
+    df = df.drop(columns=['customer'])
+
     # Retrieve common items
-    common_items = apriori(df, min_support=0.4, use_colnames=True, verbose=1)
+    common_items = apriori(df, min_support=0.01, max_len=2, use_colnames=True, verbose=1)
 
     # Get association rules
-    ap_rules = association_rules(common_items, metric='confidence')
-    rule_list = list(ap_rules)
+    ap_rules = association_rules(common_items, metric='confidence', min_threshold=0.3)
 
-    recommendations = {}
-    for product in rule_list:
-        collect = product[0]
-        clothes = [item for item in collect]
-        recommendations[clothes[0]] = clothes[1:]
+    # Format data frame
+    cols = ['antecedents','consequents']
+    ap_rules[cols] = ap_rules[cols].astype('string')
+
+    ap_rules['antecedents'] = ap_rules['antecedents'].str.removeprefix("frozenset({'")
+    ap_rules['antecedents'] = ap_rules['antecedents'].str.removesuffix("'})")
+
+    ap_rules['consequents'] = ap_rules['consequents'].str.removeprefix("frozenset({'")
+    ap_rules['consequents'] = ap_rules['consequents'].str.removesuffix("'})")
+
+    # Find recommended items
+    recs = ap_rules.loc[ap_rules['antecedents'] == product]['consequents'].tolist()
+
+    return recs
