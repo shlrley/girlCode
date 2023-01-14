@@ -22,6 +22,17 @@ const Post = () => {
     {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
     {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'}]
 
+    useEffect(() => {
+        fetch('/post',{
+            'methods': 'GET',
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(response => setPost(response))
+        .catch(error => console.log(error));
+    }, [Post]);
 
     return (
         <Wrapper>
@@ -38,9 +49,9 @@ const Post = () => {
                 </Col>
                 <Col>
                     <Desc>
-                        <Title>Item Name</Title>
+                        <Title>Item Name: {Post.item}</Title>
                         <Subtitle>Description</Subtitle>
-                        <Sub>Color<br/>Size</Sub>
+                        <Sub>Color: {Post.color}<br/>Size: {Post.size}</Sub>
                         <Direct>Direct Link</Direct>
                         <Text>Comments &nbsp; ∨</Text>
                     </Desc>
