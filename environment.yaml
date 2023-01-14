@@ -13,4 +13,5 @@ dependencies:
   - requests
   - pip
   - pip:
-      - mlxtend
+      - mlxtend   
+  - flask
