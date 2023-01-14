@@ -7,12 +7,9 @@ import Profile from '../components/Profile.jsx';
 
 const UserPosts = () => {
 
-    const posts = [{image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'}]
+    const posts = [{image: 'https://aritzia.scene7.com/is/image/Aritzia/medium/f20_00_a06_78786_19269_on_a.jpg'},
+    {image: 'https://aritzia.scene7.com/is/image/Aritzia/large/f20_00_a06_78786_19269_on_d.jpg'},
+    {image: 'https://media.karousell.com/media/photos/products/2020/11/4/aritzia_babaton_canberra_cardi_1604530519_f15613ad_progressive.jpg'},]
 
     return (
         <Wrapper>

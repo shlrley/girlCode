@@ -7,12 +7,11 @@ import Profile from '../components/Profile.jsx';
 
 const SavedPosts = () => {
 
-    const posts = [{image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'},
-    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f22_01_a01_83131_18914_on_a?wid=1500'}]
+    const posts = [{image: 'https://i.ebayimg.com/images/g/C5IAAOSw-11fzafY/s-l1600.jpg'},
+    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f20_04_a06_79697_1274_on_a?wid=1200'},
+    {image: 'https://aritzia.scene7.com/is/image/Aritzia/s21_03_a06_81788_1311_on_a?wid=1200'},
+    {image: 'https://i.ebayimg.com/images/g/JP4AAOSwA~JfzafK/s-l500.jpg'},
+    {image: 'https://aritzia.scene7.com/is/image/Aritzia/f20_03_a06_80214_15950_on_a?wid=1200'}]
 
     return (
         <Wrapper>

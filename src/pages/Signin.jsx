@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import google from '../img/google.png'
 import fb from '../img/fb.png'
 import aritzia from '../img/aritzia.png'
+import logo from '../img/logo.png'
 
 const Signin = () => {
 
@@ -38,6 +39,7 @@ const Signin = () => {
     //         .then(response => {
     //             console.log(response);
     //             if (response.data.authenticated) {
+    //                 setUserData({ email: "", password: "" });
     //                 navigator();
     //             } else {
     //                 // Handle unsuccessful login
@@ -50,6 +52,7 @@ const Signin = () => {
 
     return (
         <Wrapper>
+            <Icon src={logo} />
             <Header>Join a community of fashion enthusiasts.</Header>
             <Sign>
                 <Sub>Sign In</Sub>
@@ -60,6 +63,7 @@ const Signin = () => {
                     placeholder="Email"
                     name="email"
                     value={userData.email}
+                    required
                     onChange={handleChange} />
                     <Input
                     label="Password"
@@ -67,6 +71,7 @@ const Signin = () => {
                     placeholder="Password"
                     name="password" 
                     value={userData.password}
+                    required
                     onChange={handleChange} />
                     <Submit type="submit">Sign in</Submit>
                 </Form> 
@@ -91,7 +96,7 @@ export default Signin
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 75px;
+    margin-top: 46px;
     margin-bottom: 40px;
 `
 
@@ -183,4 +188,9 @@ const Submit = styled.button`
         background: black;
         color: white;
     }
+`
+
+const Icon = styled.img`
+    width: 70px;
+    align-self: center;
 `
