@@ -38,6 +38,7 @@ const Signin = () => {
     //         .then(response => {
     //             console.log(response);
     //             if (response.data.authenticated) {
+    //                 setUserData({ email: "", password: "" });
     //                 navigator();
     //             } else {
     //                 // Handle unsuccessful login

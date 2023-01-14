@@ -23,12 +23,12 @@ const Signup = () => {
         setUserData({ ...userData, [event.target.name]: event.target.value });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(userData);
-        setUserData({ name: "", email: "", password: "" });
-        navigator();
-    };
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     console.log(userData);
+    //     setUserData({ name: "", email: "", password: "" });
+    //     navigator();
+    // };
 
     useEffect(() => {
         // storing input name
@@ -36,18 +36,18 @@ const Signup = () => {
         localStorage.setItem("email", JSON.stringify(userData.email));
       }, [userData]);
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     axios.post('/api/users', userData)
-    //     .then(response => {
-    //         console.log(response);
-    //         setUserData({ name: "", email: "", password: "" });
-    //         navigator();
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     });
-    // };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        axios.post('/signup', userData)
+        .then(response => {
+            console.log(response);
+            setUserData({ name: "", email: "", password: "" });
+            navigator();
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    };
 
     return (
         <Wrapper>
