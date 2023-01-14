@@ -11,7 +11,9 @@ dependencies:
   - matplotlib
   - altair
   - requests
+  - scipy
   - pip
   - pip:
-      - mlxtend   
-  - flask
+      - flask
+      - mlxtend
+      - selenium
