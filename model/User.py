@@ -1,11 +1,9 @@
 from main import json
 
-class Product:
-    def __init__(self, product):
-        self.user = None
-        self.item = product
-        self.color = None
-        self.size = None
+class User:
+    def __init__(self, user):
+        self.user = user
+        self.post = None
 
     def get(self):
         data = {}
@@ -14,10 +12,8 @@ class Product:
             print("User Not Found")
             data["message"] = "Product Not Found"
             return json.dumps(data)
-
+        
         data["user"] = self.user
-        data["item"] = self.item
-        data["color"] = self.color
-        data["size"] = self.size
-    
+        data["post"] = self.post
+
         return json.dumps(data)
