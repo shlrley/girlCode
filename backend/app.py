@@ -6,8 +6,6 @@ from flask_cors import CORS, cross_origin
 from models import db, User, Post
 import os
 
-print('Running!');
-
 app = Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -21,7 +19,7 @@ def index():
     posts = Post.query.all()
     return render_template('index.html', posts=posts)
 
-# @app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         username = request.form['username']
